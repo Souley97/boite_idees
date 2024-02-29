@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Idées</title>
+    <title>Liste des Idées Masque</title>
     <!-- Ajout de Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
@@ -37,9 +37,6 @@ if (!isset($_SESSION['user_id'])) {
                     <a class="nav-link" href="../idee">Liste Idées</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../idee/listMasque.php">Liste Idées Maque</a>
-                </li>
-                <li class="nav-item">
                     <!-- <a class="nav-link" href="../view/idees_validees.php">Idées Validées</a> -->
                 </li>
             </ul>
@@ -56,8 +53,8 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="card">
         <div class="card-header">
-            <h1 class="mb-0">Liste des Idées</h1>
-            <a href="ajouter.php" class="btn btn-primary btn-sm"> Ajouter</a>
+            <h1 class="mb-0">Liste des Idées Masques</h1>
+            <!-- <a href="ajouter.php" class="btn btn-primary btn-sm"> Ajouter</a> -->
 
         </div>
         
@@ -78,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
                     <?php 
                   
             include("../../model/idee_db.php");
-            $idees = listeIdee()->fetchAll();
+            $idees = listeIdeeMasque()->fetchAll();
         foreach ($idees as $idee){ ?>
 
                         <tr>
@@ -88,9 +85,9 @@ if (!isset($_SESSION['user_id'])) {
                             <td><?=$idee['statut']?></td>
                             <td>
                                 <!-- Boutons d'action (par exemple, Modifier et Supprimer) -->
-                                <a href="modifier.php?id=<?php echo $idee['id']; ?>" class="btn btn-primary btn-sm">Modifier</a>
+                                <!-- <a href="modifier.php?id=<?php echo $idee['id']; ?>" class="btn btn-primary btn-sm">Modifier</a>
                                 <a href="supprimer.php?id=<?php echo $idee['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette idée ?')">Supprimer</a>
-                                <a href="modifStatut.php?id=<?php echo $idee['id']; ?>" class="btn back_btn btn-sm">Terminer</a>
+                                <a href="modifStatut.php?id=<?php echo $idee['id']; ?>" class="btn back_btn btn-sm">Terminer</a> -->
                             </td>
                         </tr>
                         <?php

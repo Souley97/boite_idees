@@ -83,7 +83,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td>
                                 <!-- Boutons d'action (par exemple, Modifier et Supprimer) -->
                                 <a href="modifier.php?id=<?php echo $categorie['id']; ?>" class="btn btn-primary btn-sm">Modifier</a>
-                                <a href="supprimer.php?id=<?php echo $categorie['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette idée ?')">Supprimer</a>
+                                <!-- <a href="supprimer.php?id=<?php echo $categorie['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette idée ?')">Supprimer</a> -->
                             </td>
                         </tr>
                         <?php
