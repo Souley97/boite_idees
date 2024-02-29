@@ -25,19 +25,13 @@ if (isset($_POST['updateIdee'])) {
     }
 }
 ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier une Idée</title>
-</head>
-<body>
-
 <?php
+include "../head.php";
+include "../navbar.php";
+?>
+
+  <div class="limiter">
+  <?php
 // Récupérez l'identifiant de l'idée à mettre à jour depuis l'URL ou d'une autre manière appropriée
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -48,26 +42,70 @@ $sql = $conn->prepare("SELECT * FROM Idee WHERE id = :id");
 $sql->execute(array(':id' => $id));
 $idee = $sql->fetch(PDO::FETCH_ASSOC);
 ?>
+     
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="../../public/images/idee.jpg" alt="IMG">
+        </div>
+        <form class="login100-form validate-form" action="modifier.php" method="post">
+          <span class="login100-form-titqle">
+            Modifier un idee </span>
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" name="titre" placeholder="titre"  value="<?php echo isset($idee['titre']) ? htmlspecialchars($idee['titre']) : ''; ?>" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" name="description" placeholder="description"  value="<?php echo isset($idee['description']) ? htmlspecialchars($idee['description']) : ''; ?>" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+           <!-- L'ID de l'utilisateur est récupéré à partir de la session -->
+           <input type="hidden" name="id" value="<?php echo $id; ?>">
+          <!-- <div class="wrap-input100 validate-input">
+            <input class="input100" type="text" name="id_categorie" placeholder="id_categorie">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div> -->
 
-<h1>Modifier une Idée</h1>
+          <div class="wrap-input100 validate-input">
+               <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+          <div class="container-login100-form-btn">
+            <input type="submit" name="updateIdee" class="login100-form-btn">
+          </div>
 
-<form action="modifier.php" method="post">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
-    
-    <label for="titre">Titre :</label>
-    <input type="text" id="titre" name="titre" value="<?php echo isset($idee['titre']) ? htmlspecialchars($idee['titre']) : ''; ?>" required>
-    
-    <label for="description">Description :</label>
-    <textarea id="description" name="description" required><?php echo isset($idee['description']) ? htmlspecialchars($idee['description']) : ''; ?></textarea>
-    
-    <!-- <label for="id_utilisateur">ID Utilisateur :</label>
-    <input type="text" id="id_utilisateur" name="id_utilisateur" value="<?php echo isset($idee['id_utilisateur']) ? $idee['id_utilisateur'] : ''; ?>" required>
-    
-    <label for="id_categorie">ID Catégorie :</label>
-    <input type="text" id="id_categorie" name="id_categorie" value="<?php echo isset($idee['id_categorie']) ? $idee['id_categorie'] : ''; ?>" required>
-     -->
-    <button type="submit" name="updateIdee">Mettre à jour</button>
-</form>
+          <div class="text-center p-t-136">
+            <a class="txt2" href="index.php">
+              listes des Idees
 
+              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Ajout des scripts Bootstrap -->
+
+
+    <!-- Ajout de Bootstrap JS et Popper.js (nécessaires pour certaines fonctionnalités de Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

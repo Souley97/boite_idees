@@ -13,7 +13,7 @@
                     <a class="nav-link" href="../idee">Liste Idées</a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href="../idee/listMasque.php">Liste Idées Maque</a>
+                    <a class="nav-link" href="../idee/listMasque.php">Liste Idées validées</a>
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="../view/idees_validees.php">Idées Validées</a> -->
